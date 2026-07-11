@@ -3,6 +3,37 @@
 # Usage: sudo ./setup.bash <username> <public-key-or-path>
 set -euo pipefail
 
+if [[ ! -f /usr/local/lib/admin-cws/config.bash ]]; then
+    echo ""
+    echo "admin-cws is not installed. This script will install it now."
+    echo "The following files will be placed in /usr/local/lib/admin-cws/:"
+    echo "  - config.bash"
+    echo "  - run.bash"
+    echo "  - log.bash"
+    echo "  - setup.bash"
+    echo "  - remove.bash"
+    echo ""
+    read -r -p "Proceed with installation? [y/N] " REPLY
+    case "$REPLY" in
+        [yY]|[yY][eE][sS]) ;;
+        *) echo "Aborted."; exit 1 ;;
+    esac
+
+    TEMP_DIR=$(mktemp -d)
+    git clone --depth 1 https://github.com/pasewalck/admin-cws.git "$TEMP_DIR" 2>/dev/null || {
+        echo "[ERROR] Failed to clone admin-cws repository. Ensure git is installed and you have internet access." >&2
+        exit 1
+    }
+
+    (cd "$TEMP_DIR/executer" && make install) || {
+        echo "[ERROR] Failed to install admin-cws via Makefile." >&2
+        exit 1
+    }
+
+    rm -rf "$TEMP_DIR"
+    exec /usr/local/lib/admin-cws/setup.bash "$@"
+fi
+
 source /usr/local/lib/admin-cws/config.bash
 
 die() {
