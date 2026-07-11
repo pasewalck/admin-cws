@@ -136,12 +136,12 @@ list_commands() {
 TOP_CMD=$(echo "$SSH_ORIGINAL_COMMAND" | awk '{print $1}')
 TOP_CMD_ARGS="${SSH_ORIGINAL_COMMAND#* }"
 
-if [[ TOP_CMD == "run" ]]; then
+if [[ "$TOP_CMD" == "run" ]]; then
     CMD=$(echo "$TOP_CMD_ARGS" | awk '{print $1}')
     ARGS="${TOP_CMD_ARGS#* }"
 
     run_command "$CMD" "$ARGS"
 
-elif [[ TOP_CMD == "list" ]]; then
+elif [[ "$TOP_CMD" == "list" ]]; then
     list_commands
 fi
