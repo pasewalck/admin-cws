@@ -4,3 +4,4 @@ router/node_modules
 router/data
 router/drizzle
 router/dist
+router/tsconfig.tsbuildinfo

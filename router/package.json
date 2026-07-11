@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "drizzel-generate": "npx drizzle-kit generate",
+    "drizzel-migrate": "npx drizzle-kit migrate",
+    "drizzel-push": "npx drizzle-kit push",
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --build"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^26.1.0",
+    "@types/sshpk": "^1.17.5",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^6.0.3"
+  },
+  "dependencies": {
+    "@fastify/cors": "^11.3.0",
+    "@fastify/jwt": "^10.2.0",
+    "@types/ssh2": "^1.15.5",
+    "better-sqlite3": "^12.11.1",
+    "commander": "^15.0.0",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "fastify": "^5.10.0",
+    "ssh2": "^1.17.0",
+    "sshpk": "^1.18.0",
+    "uuid": "^14.0.1"
+  },
+  "name": "router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "keywords": []
+}

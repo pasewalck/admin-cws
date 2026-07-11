@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  admin-cws-router:
+    build: .
+    container_name: admin-cws-router
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - KEY_PASSPHRASE=${KEY_PASSPHRASE}
+    restart: unless-stopped
