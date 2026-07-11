@@ -1,0 +1,6 @@
+router/node_modules
+.vscode
+.env
+router/data
+router/drizzle
+router/dist
